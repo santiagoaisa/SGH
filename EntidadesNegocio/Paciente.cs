@@ -1,16 +1,23 @@
 ﻿using System;
 
-namespace EntidadesNegocio
+namespace Entities
 {
-    public class Paciente
+    public class Paciente : Persona
     {
-        public string Dni { get; set; }
-        public string Nombre { get; set; }
-        public string Apellido { get; set; }
-        public Paciente(string dni, string nombre, string apellido) {
-            this.Dni = dni;
-            this.Nombre = nombre;
-            this.Apellido = apellido;
+        public DateTime FechaNac { get; set; }
+        public EnumTipo Tipo { get; set; }
+        public Historia HistCli { get; set; }
+        public Paciente(string dni, string nombre, string apellidos, DateTime fechaNac, EnumTipo tipo) : base(dni, nombre, apellidos)
+        {
+            this.FechaNac = fechaNac;
+            this.Tipo = tipo;
         }
+
+
+        public void AsignarHistoria(Historia hist)
+        {
+            this.HistCli = hist;
+        }
+
     }
 }
