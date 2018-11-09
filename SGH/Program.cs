@@ -8,7 +8,7 @@ namespace SGH
     {
         static void Main(string[] args)
         {
-            FormularioRegistrarPaciente();
+            MenuPrincipal();
 
         }
 
@@ -74,7 +74,7 @@ namespace SGH
                 switch (opcionMenu)
                 {
                     case 1:
-                        Console.WriteLine("Eligio la opcion 1");
+                        FormularioRegistrarPaciente();
                         menuValido = true;
                         break;
                     case 2:
@@ -104,26 +104,54 @@ namespace SGH
             Console.Clear();
             Console.WriteLine("********  Registro de Pacientes  ********");
             Console.WriteLine("");
-            Console.WriteLine("Elija una opcion:");
+            Console.WriteLine("1.Registro de paciente");
+            Console.WriteLine("0. Volver al MENU PRINCIPAL");
             Console.WriteLine("");
 
-            Console.WriteLine("Ingrese DNI:");
-            int dni = int.Parse(Console.ReadLine());
-            Console.WriteLine("Ingrese sus nombres:");
-            string nombre = Console.ReadLine();
-            Console.WriteLine("Ingrese sus apellidos:");
-            string apellido = Console.ReadLine();
-            Console.WriteLine("Ingrese su fecha de nacimiento:");
-            int fecnac = int.Parse(Console.ReadLine());
-            Console.WriteLine("Tipo de asegurado:");
-            string tipo = Console.ReadLine();
+            
+
+            
 
 
+            bool menuValido = false;
 
-            Console.WriteLine("0.Regresar al MENU PRINCIPAL");
+            while (!menuValido)
+            {
 
+                Console.WriteLine("Elija Usted una opcion del Menu Paciente:");
 
+                int opcionMenu = int.Parse(Console.ReadLine());
+
+                switch (opcionMenu)
+                {
+                    case 1:
+                        Console.WriteLine("Ingrese DNI:");
+                        int dni = int.Parse(Console.ReadLine());
+                        Console.WriteLine("Ingrese sus nombres:");
+                        string nombre = Console.ReadLine();
+                        Console.WriteLine("Ingrese sus apellidos:");
+                        string apellido = Console.ReadLine();
+                        Console.WriteLine("Ingrese su fecha de nacimiento:");
+                        int fecnac = int.Parse(Console.ReadLine());
+                        Console.WriteLine("Tipo de asegurado:");
+                        string tipo = Console.ReadLine(); ;
+                        menuValido = true;
+                        break;
+                    case 0:
+                        MenuPrincipal();
+                        menuValido = true;
+                        break;
+                    default:
+                        menuValido = false;
+                        Console.WriteLine("Elija una opcion valida");
+                        break;
+                }
+                Console.ReadKey();
+
+            }
         }
+
+      
     }
 
 
