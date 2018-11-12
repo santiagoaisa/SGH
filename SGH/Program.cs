@@ -78,8 +78,11 @@ namespace SGH
                         menuValido = true;
                         break;
                     case 2:
-                        Console.WriteLine("Eligio la opcion 2");
+                        BuscarPaciente();
                         menuValido = true;
+                        break;
+                    case 3:
+                        ObtenerCita();
                         break;
                     case 0:
                         MenuPrincipal();
@@ -95,8 +98,18 @@ namespace SGH
 
 
 
-            Console.ReadLine();
+            Console.ReadKey();
 
+        }
+
+        public static void ObtenerCita()
+        {
+            Console.Clear();
+            Console.WriteLine("********  Registro de Citas  ********");
+            Console.WriteLine("");
+            Console.WriteLine("1.Registrar una cita");
+            Console.WriteLine("0. Volver al MENU PRINCIPAL");
+            Console.WriteLine("");
         }
 
         public static void FormularioRegistrarPaciente()
@@ -108,9 +121,7 @@ namespace SGH
             Console.WriteLine("0. Volver al MENU PRINCIPAL");
             Console.WriteLine("");
 
-            
 
-            
 
 
             bool menuValido = false;
@@ -151,42 +162,85 @@ namespace SGH
             }
         }
 
-      
+        public static void BuscarPaciente()
+        {
+            Console.Clear();
+            Console.WriteLine("********  Busqueda de Pacientes en Base de Datos  ********");
+            Console.WriteLine("");
+            Console.WriteLine("1.Busqueda");
+            Console.WriteLine("0. Volver al MENU PRINCIPAL");
+            Console.WriteLine("");
+
+            bool menuValido = false;
+
+            while (!menuValido)
+            {
+
+                Console.WriteLine("Elija Usted una opcion del Menu para comenzar la busqueda:");
+
+                int opcionMenu = int.Parse(Console.ReadLine());
+
+                switch (opcionMenu)
+                {
+                    case 1:
+                        Console.WriteLine("Ingrese DNI:");
+                        int dni = int.Parse(Console.ReadLine());
+                        break;
+                    case 0:
+                        MenuPrincipal();
+                        menuValido = true;
+                        break;
+                    default:
+                        menuValido = false;
+                        Console.WriteLine("Elija una opcion valida");
+                        break;
+                }
+                Console.ReadKey();
+            }
+
+        }
+
     }
-
-
-    /*Ejemplo
-     * 
-        PacienteBL pacienteBL = new PacienteBL();
-            var Pacientes= pacienteBL.GetPacientes();
-            Console.WriteLine("Todos los Pacientes...");
-            foreach (var item in Pacientes)
-            {
-                Console.WriteLine($"{item.Dni},{item.Nombre},{item.Apellido}");
-            }
-            //ACTUALIZAR PACIENTE
-            Paciente updatedPaciente = new Paciente("44216617","Jose", "Herrera");
-            pacienteBL.UpdatePaciente("44216617", updatedPaciente);
-            Console.WriteLine("Actualizacion de Paciente...");
-            foreach (var item in PacienteBL.Listpacientes)
-            {
-                Console.WriteLine($"{item.Dni},{item.Nombre},{item.Apellido}");
-            }
-            //AGREGAR PACIENTE
-            Paciente newPaciente = new Paciente("44216619", "Martin", "Centeno");
-            pacienteBL.InsertPaciente(newPaciente);
-            Console.WriteLine("Insertar Paciente...");
-            foreach (var item in PacienteBL.Listpacientes)
-            {
-                Console.WriteLine($"{item.Dni},{item.Nombre},{item.Apellido}");
-            }
-            //ELIMINAR PACIENTE
-            pacienteBL.DeletePaciente("44216619");
-            Console.WriteLine("Eliminar Paciente...");
-            foreach (var item in PacienteBL.Listpacientes)
-            {
-                Console.WriteLine($"{item.Dni},{item.Nombre},{item.Apellido}");
-            }
-     * */
-
 }
+
+
+
+
+
+
+
+
+/*Ejemplo
+ * 
+    PacienteBL pacienteBL = new PacienteBL();
+        var Pacientes= pacienteBL.GetPacientes();
+        Console.WriteLine("Todos los Pacientes...");
+        foreach (var item in Pacientes)
+        {
+            Console.WriteLine($"{item.Dni},{item.Nombre},{item.Apellido}");
+        }
+        //ACTUALIZAR PACIENTE
+        Paciente updatedPaciente = new Paciente("44216617","Jose", "Herrera");
+        pacienteBL.UpdatePaciente("44216617", updatedPaciente);
+        Console.WriteLine("Actualizacion de Paciente...");
+        foreach (var item in PacienteBL.Listpacientes)
+        {
+            Console.WriteLine($"{item.Dni},{item.Nombre},{item.Apellido}");
+        }
+        //AGREGAR PACIENTE
+        Paciente newPaciente = new Paciente("44216619", "Martin", "Centeno");
+        pacienteBL.InsertPaciente(newPaciente);
+        Console.WriteLine("Insertar Paciente...");
+        foreach (var item in PacienteBL.Listpacientes)
+        {
+            Console.WriteLine($"{item.Dni},{item.Nombre},{item.Apellido}");
+        }
+        //ELIMINAR PACIENTE
+        pacienteBL.DeletePaciente("44216619");
+        Console.WriteLine("Eliminar Paciente...");
+        foreach (var item in PacienteBL.Listpacientes)
+        {
+            Console.WriteLine($"{item.Dni},{item.Nombre},{item.Apellido}");
+        }
+ * */
+
