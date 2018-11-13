@@ -29,8 +29,8 @@ namespace LogicaNegocios
                 DateTime FechaNacimiento = DateTime.Parse(item.Split('|')[3]); ;
                 EnumTipo TipoPaciente = (EnumTipo)Enum.Parse(typeof(EnumTipo), item.Split('|')[4], true);
 
-                Paciente p = new Paciente(Dni,Nombre,Apellido,FechaNacimiento,TipoPaciente);
-                Listpacientes.Add(p);
+               // Paciente p = new Paciente(Dni,Nombre,Apellido,FechaNacimiento,TipoPaciente);
+               // Listpacientes.Add(p);
             }
             return Listpacientes;
         }

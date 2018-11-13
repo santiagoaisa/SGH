@@ -13,10 +13,10 @@ namespace SGH
         {
             PacienteBL pacienteBL = new PacienteBL();
          
-            Paciente newPaciente = new Paciente("44216619", "SIXTO SANTIAGO", "AISA INCAPUÑO", DateTime.Parse("06-08-2018"),EnumTipo.ASEGURADO);
+           // Paciente newPaciente = new Paciente("44216619", "SIXTO SANTIAGO", "AISA INCAPUÑO", DateTime.Parse("06-08-2018"),EnumTipo.ASEGURADO);
         
             
-            pacienteBL.InsertPaciente(newPaciente);
+           // pacienteBL.InsertPaciente(newPaciente);
             Console.WriteLine("Insertar Paciente...");
             Console.ReadLine();
 

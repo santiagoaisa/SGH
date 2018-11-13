@@ -7,10 +7,10 @@ namespace Entities
         public DateTime FechaNac { get; set; }
         public EnumTipo Tipo;
         public Historia HistCli { get; set; }
-        public Paciente(string dni, string nombre, string apellidos, DateTime fechaNac, EnumTipo tipo) : base(dni, nombre, apellidos)
+        public Paciente(string dni, string nombre, string apellidos, DateTime fechaNac, string tipo) : base(dni, nombre, apellidos)
         {
             this.FechaNac = fechaNac;
-            this.Tipo = tipo;
+            this.TipoPaciente = tipo;
         }
 
         public string TipoPaciente
