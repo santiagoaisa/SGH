@@ -58,6 +58,7 @@ namespace SGH
             Console.WriteLine("");
             Console.WriteLine("1.Crear paciente");
             Console.WriteLine("2.Buscar pacientes");
+            Console.WriteLine("3.Obtener Cita");
             Console.WriteLine("");
             Console.WriteLine("0.Regresar al MENU PRINCIPAL");
 
@@ -83,6 +84,7 @@ namespace SGH
                         break;
                     case 3:
                         ObtenerCita();
+                        menuValido = true;
                         break;
                     case 0:
                         MenuPrincipal();
@@ -108,8 +110,42 @@ namespace SGH
             Console.WriteLine("********  Registro de Citas  ********");
             Console.WriteLine("");
             Console.WriteLine("1.Registrar una cita");
+            Console.WriteLine("2. Regresar a la pagina anterior");
             Console.WriteLine("0. Volver al MENU PRINCIPAL");
             Console.WriteLine("");
+
+            bool menuValido = false;
+
+            while (!menuValido)
+            {
+
+                Console.WriteLine("Elija una opcion para continuar:");
+
+                int opcionMenu = int.Parse(Console.ReadLine());
+
+                switch (opcionMenu)
+                {
+                    case 1:
+                        Console.WriteLine("Ingrese DNI:");
+                        int dni = int.Parse(Console.ReadLine());
+                        menuValido = true;
+                        break;
+                    case 2:
+                        ObtenerCita();
+                        menuValido = true;
+                        break;
+                    case 0:
+                        MenuPrincipal();
+                        menuValido = true;
+                        break;
+                    default:
+                        menuValido = false;
+                        Console.WriteLine("Elija una opcion valida");
+                        break;
+                }
+                Console.ReadKey();
+            }
+
         }
 
         public static void FormularioRegistrarPaciente()
@@ -118,10 +154,9 @@ namespace SGH
             Console.WriteLine("********  Registro de Pacientes  ********");
             Console.WriteLine("");
             Console.WriteLine("1.Registro de paciente");
+            Console.WriteLine("2.Regresar a la pagina anterior");
             Console.WriteLine("0. Volver al MENU PRINCIPAL");
             Console.WriteLine("");
-
-
 
 
             bool menuValido = false;
@@ -148,6 +183,10 @@ namespace SGH
                         string tipo = Console.ReadLine(); ;
                         menuValido = true;
                         break;
+                    case 2:
+                        FormularioRegistrarPaciente();
+                        menuValido = true;
+                        break;
                     case 0:
                         MenuPrincipal();
                         menuValido = true;
@@ -168,6 +207,7 @@ namespace SGH
             Console.WriteLine("********  Busqueda de Pacientes en Base de Datos  ********");
             Console.WriteLine("");
             Console.WriteLine("1.Busqueda");
+            Console.WriteLine("2.Regresar a la pagina anterior");
             Console.WriteLine("0. Volver al MENU PRINCIPAL");
             Console.WriteLine("");
 
@@ -185,6 +225,11 @@ namespace SGH
                     case 1:
                         Console.WriteLine("Ingrese DNI:");
                         int dni = int.Parse(Console.ReadLine());
+                        menuValido = true;
+                        break;
+                    case 2:
+                        BuscarPaciente();
+                        menuValido = true;
                         break;
                     case 0:
                         MenuPrincipal();
