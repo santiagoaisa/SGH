@@ -50,7 +50,7 @@ namespace LogicaNegocios
         }
         public void InsertPaciente(Paciente paciente) {
             string path = PacientesDAL.ConexionPacientes();
-            using (StreamWriter outputFile = new StreamWriter($"{path}\\BD\\Pacientes.txt"))
+            using (StreamWriter outputFile = File.AppendText($"{path}\\BD\\Pacientes.txt"))
             {
                 string line = $"{paciente.Dni}|{paciente.Nombre}|{paciente.Apellidos}|{paciente.FechaNac}|{paciente.Tipo.ToString()}";
                 outputFile.WriteLine(line);

@@ -18,6 +18,7 @@ namespace SGH
             
             pacienteBL.InsertPaciente(newPaciente);
             Console.WriteLine("Insertar Paciente...");
+            Console.ReadLine();
 
         }
        
