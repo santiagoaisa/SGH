@@ -1,5 +1,5 @@
 ﻿using System;
-
+using Enumeraciones;
 namespace Entities
 {
     public class Paciente : Persona

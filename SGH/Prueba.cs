@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Entities;
+using Enumeraciones;
 using LogicaNegocios;
 
 namespace SGH
