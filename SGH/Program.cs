@@ -329,10 +329,10 @@ namespace SGH
         }
         public static void FormularioRegistrarDoctor()
         {
-            PacienteBL pacienteBL = new PacienteBL();
+            DoctorBL DoctorBL = new DoctorBL();
 
             Console.Clear();
-            Console.WriteLine("********  Registro de Pacientes  ********");
+            Console.WriteLine("********  Registro de Doctores ********");
             Console.WriteLine("");
 
             Console.WriteLine("Ingrese DNI:");
