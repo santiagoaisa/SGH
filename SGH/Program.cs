@@ -186,7 +186,7 @@ namespace SGH
             Console.WriteLine("A - Asegurado");
             Console.WriteLine("P - Particular");
             
-            string tipo = Console.ReadLine(); ;
+            string tipo = Console.ReadLine(); 
             Console.WriteLine("");
 
             Console.WriteLine("********  CONFIRMACIÓN DE REGISTRO  ********");
@@ -329,7 +329,7 @@ namespace SGH
         }
         public static void FormularioRegistrarDoctor()
         {
-            DoctorBL DoctorBL = new DoctorBL();
+            DoctorBL doctorBL = new DoctorBL();
 
             Console.Clear();
             Console.WriteLine("********  Registro de Doctores ********");
@@ -343,13 +343,11 @@ namespace SGH
             string nombre = Console.ReadLine();
             Console.WriteLine("Ingrese sus apellidos:");
             string apellido = Console.ReadLine();
+
             Console.WriteLine("Especialidad:");
-            string especialidad = Console.ReadLine();
-
-
-
-            string tipo = Console.ReadLine();
-            Console.WriteLine("");
+            Console.WriteLine("G - para general, luego lo derivaremos a otras especialidades");
+            string Espec = Console.ReadLine();
+            
 
             Console.WriteLine("********  CONFIRMACIÓN DE REGISTRO  ********");
             Console.WriteLine("");
@@ -370,16 +368,13 @@ namespace SGH
                 switch (opcionMenu)
                 {
                     case 1:
-                        /*
-                        Paciente paciente = new Paciente(dni, nombre, apellido, fechaNac, tipo);
-                        pacienteBL.InsertPaciente(paciente);*/
-
-
+                        Medico medico = new Medico(dni,nombre, apellido,cmp,Espec);
+                        doctorBL.InsertMedico(medico);
                         menuValido = true;
-                        MenuPaciente();
+                        MenuMedicos();
                         break;
                     case 2:
-                        MenuPaciente();
+                        MenuMedicos();
                         menuValido = true;
                         break;
                     case 0:
@@ -453,7 +448,7 @@ namespace SGH
 
 /*Ejemplo
  * 
-    PacienteBL pacienteBL = new PacienteBL();
+        PacienteBL pacienteBL = new PacienteBL();
         var Pacientes= pacienteBL.GetPacientes();
         Console.WriteLine("Todos los Pacientes...");
         foreach (var item in Pacientes)
