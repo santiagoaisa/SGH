@@ -12,6 +12,43 @@ namespace LogicaNegocios
     public class PacienteBL
     {
         public static List<Paciente> Listpacientes;
+
+        public Paciente GetPaciente(String dni)
+        {
+            string path = PacientesDAL.ConexionPacientes();
+
+            Console.WriteLine($"{path}\\BD\\Pacientes.txt");
+            Console.ReadLine();
+
+            string[] lines = System.IO.File.ReadAllLines($"{path}\\BD\\Pacientes.txt");
+            Paciente paciente= new Paciente();
+            foreach (var item in lines)
+            {
+                string Dni = item.Split('|')[0];
+
+                if (item == dni)
+                {
+                    string Nombre = item.Split('|')[1];
+                    string Apellido = item.Split('|')[2];
+                    DateTime FechaNacimiento = DateTime.Parse(item.Split('|')[3]); ;
+                    string TipoPaciente = item.Split('|')[4];
+
+                    //EnumTipo TipoPaciente = (EnumTipo)Enum.Parse(typeof(EnumTipo), item.Split('|')[4], true);
+
+
+                    paciente.Dni = dni;
+                    paciente.Nombre = Nombre;
+                    paciente.FechaNac = FechaNacimiento;
+                    paciente.TipoPaciente = TipoPaciente.Substring(0,1);
+                }
+                
+                
+            }
+
+           
+
+            return paciente;
+        }
         public List<Paciente> GetPacientes()
         {
             string path = PacientesDAL.ConexionPacientes();
