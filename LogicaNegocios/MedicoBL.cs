@@ -68,7 +68,7 @@ namespace LogicaNegocios
            return elementsRemoved;
         }
         private int UpdateDataBase() {
-            string path = DoctoresDAL.ConexionDoctores();
+            string path = MedicosDAL.ConexionMedicos();
             int updatedLines = 0;
             using (StreamWriter outputFile = new StreamWriter($"{path}\\BD\\Medicos.txt"))
             {

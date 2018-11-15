@@ -368,7 +368,7 @@ namespace SGH
                 switch (opcionMenu)
                 {
                     case 1:
-                        Medico medico = new Medico(dni,nombre, apellido,cmp,Espec);
+                        Medico medico = new Medico(dni,nombre, apellido,cmp);
                         doctorBL.InsertMedico(medico);
                         menuValido = true;
                         MenuMedicos();

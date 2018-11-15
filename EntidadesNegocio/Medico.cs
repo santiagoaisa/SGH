@@ -15,6 +15,9 @@ namespace Entities
             this.Espec = espec;
         }
 
-    
+        public Medico(string dni, string nombre, string apellidos, string cmp) : base(dni, nombre, apellidos)
+        {
+            Cmp = cmp;
+        }
     }
 }
