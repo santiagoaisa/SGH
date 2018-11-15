@@ -14,7 +14,7 @@ namespace LogicaNegocios
         public static List<Medico> Listmedicos;
         public List<Medico> GetMedicos()
         {
-            string path = DoctoresDAL.ConexionDoctores();
+            string path = MedicosDAL.ConexionMedicos();
 
             Console.WriteLine($"{path}\\BD\\Medicos.txt");
             Console.ReadLine();
@@ -50,15 +50,15 @@ namespace LogicaNegocios
             UpdateDataBase();
         }
         public void InsertMedico(Medico medicos) {
-            string path = DoctoresDAL.ConexionDoctores();
+            string path = MedicosDAL.ConexionMedicos();
             using (StreamWriter outputFile = File.AppendText($"{path}\\BD\\Medicos.txt"))
             {
-                string line = $"{medicos.Dni}|{medicos.Cmp}|{medicos.Nombre}|{medicos.Apellidos}";
+                string line = $"{medicos.Dni}|{medicos.Nombre}|{medicos.Apellidos}|{medicos.Cmp}";
                 outputFile.WriteLine(line);
             }
 
-                
-           
+
+
         }
 
         public int DeletePaciente(string Dni)

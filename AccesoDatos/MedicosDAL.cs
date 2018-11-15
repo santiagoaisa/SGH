@@ -5,9 +5,9 @@ using System.Reflection;
 
 namespace AccesoDatos
 {
-    public class DoctoresDAL
+    public class MedicosDAL
     {
-        public static string ConexionDoctores()
+        public static string ConexionMedicos()
         {
             string pathBDDoctores = System.IO.Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
             return pathBDDoctores;
