@@ -9,7 +9,7 @@ using Enumeraciones;
 
 namespace LogicaNegocios
 {
-    public class DoctorBL
+    public class MedicoBL
     {
         public static List<Medico> Listmedicos;
         public List<Medico> GetMedicos()

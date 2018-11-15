@@ -21,12 +21,12 @@ namespace LogicaNegocios
             Console.ReadLine();
 
             string[] lines = System.IO.File.ReadAllLines($"{path}\\BD\\Pacientes.txt");
-            Paciente paciente= new Paciente();
+            Paciente paciente=null;
             foreach (var item in lines)
             {
                 string Dni = item.Split('|')[0];
 
-                if (item == dni)
+                if (item == Dni)
                 {
                     string Nombre = item.Split('|')[1];
                     string Apellido = item.Split('|')[2];
@@ -35,11 +35,8 @@ namespace LogicaNegocios
 
                     //EnumTipo TipoPaciente = (EnumTipo)Enum.Parse(typeof(EnumTipo), item.Split('|')[4], true);
 
-
-                    paciente.Dni = dni;
-                    paciente.Nombre = Nombre;
-                    paciente.FechaNac = FechaNacimiento;
-                    paciente.TipoPaciente = TipoPaciente.Substring(0,1);
+                    paciente = new Paciente(Dni,Nombre,Apellido,FechaNacimiento, TipoPaciente.Substring(0, 1));
+                   
                 }
                 
                 

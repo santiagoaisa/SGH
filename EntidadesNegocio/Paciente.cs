@@ -13,9 +13,6 @@ namespace Entities
             this.TipoPaciente = tipo;
         }
 
-        public Paciente()
-        {
-        }
 
         public string TipoPaciente
         {
