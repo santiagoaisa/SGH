@@ -37,7 +37,7 @@ namespace SGH
                 switch (opcionMenu)
                 {
                     case 1:
-                        FormularioRegistrarDoctor();
+                        RegistrarMedico();
                         menuValido = true;
                         break;
                     case 2:
@@ -60,12 +60,12 @@ namespace SGH
 
         }
 
-        public static void FormularioRegistrarDoctor()
+        public static void RegistrarMedico()
         {
             
 
             Console.Clear();
-            Console.WriteLine("********  Registro de Doctores ********");
+            Console.WriteLine("********  Registro de Medicos ********");
             Console.WriteLine("");
 
             Console.WriteLine("Ingrese DNI:");

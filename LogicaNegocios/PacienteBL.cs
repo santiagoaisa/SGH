@@ -16,9 +16,7 @@ namespace LogicaNegocios
         public Paciente GetPaciente(String dni)
         {
             string path = PacientesDAL.ConexionPacientes();
-
-            Console.WriteLine($"{path}\\BD\\Pacientes.txt");
-            Console.ReadLine();
+            
 
             string[] lines = System.IO.File.ReadAllLines($"{path}\\BD\\Pacientes.txt");
             Paciente paciente=null;
@@ -26,7 +24,7 @@ namespace LogicaNegocios
             {
                 string Dni = item.Split('|')[0];
 
-                if (item == Dni)
+                if (Dni== dni)
                 {
                     string Nombre = item.Split('|')[1];
                     string Apellido = item.Split('|')[2];
@@ -46,12 +44,12 @@ namespace LogicaNegocios
 
             return paciente;
         }
+
+
         public List<Paciente> GetPacientes()
         {
             string path = PacientesDAL.ConexionPacientes();
-
-            Console.WriteLine($"{path}\\BD\\Pacientes.txt");
-            Console.ReadLine();
+            
 
             string[] lines = System.IO.File.ReadAllLines($"{path}\\BD\\Pacientes.txt");
             Listpacientes = new List<Paciente>();

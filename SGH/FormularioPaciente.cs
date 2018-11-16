@@ -10,6 +10,8 @@ namespace SGH
 {
     class FormularioPaciente
     {
+        private static PacienteBL pacienteBL = new PacienteBL();
+
         public static void MenuPaciente()
         {
             Console.Clear();
@@ -36,7 +38,7 @@ namespace SGH
                 switch (opcionMenu)
                 {
                     case 1:
-                        FormularioRegistrarPaciente();
+                        RegistrarPaciente();
                         menuValido = true;
                         break;
                     case 2:
@@ -65,9 +67,9 @@ namespace SGH
 
         }
 
-        public static void FormularioRegistrarPaciente()
+        public static void RegistrarPaciente()
         {
-            PacienteBL pacienteBL = new PacienteBL();
+            
 
             Console.Clear();
             Console.WriteLine("********  Registro de Pacientes  ********");
@@ -93,55 +95,17 @@ namespace SGH
             DateTime fecnan = DateTime.Parse(dia + "/" + mes + "/" + año);
             Console.WriteLine("");
 
-            Console.WriteLine("Tipo de asegurado:");
+            Console.WriteLine("Tipo de paciente:");
             Console.WriteLine("A - Asegurado");
             Console.WriteLine("P - Particular");
 
             string tipo = Console.ReadLine();
             Console.WriteLine("");
 
-            Console.WriteLine("********  CONFIRMACIÓN DE REGISTRO  ********");
-            Console.WriteLine("");
-            Console.WriteLine("1. Para Registrar");
-            Console.WriteLine("2. Para Cancelar y Volver al MENU ANTERIOR");
-            Console.WriteLine("0. Para Cancelar y Volver al MENU PRINCIPAL");
-            Console.WriteLine("");
+            Paciente paciente = new Paciente(dni, nombre, apellido, fecnan, tipo);
 
-            bool menuValido = false;
-
-            while (!menuValido)
-            {
-
-                Console.WriteLine("Elija una opcion para continuar:");
-
-                int opcionMenu = int.Parse(Console.ReadLine());
-
-                switch (opcionMenu)
-                {
-                    case 1:
-                        //
-                        Paciente paciente = new Paciente(dni, nombre, apellido, fecnan, tipo);
-                        pacienteBL.InsertPaciente(paciente);
-
-
-                        menuValido = true;
-                        MenuPaciente();
-                        break;
-                    case 2:
-                        MenuPaciente();
-                        menuValido = true;
-                        break;
-                    case 0:
-                        FormularioPrincipal.MenuPrincipal();
-                        menuValido = true;
-                        break;
-                    default:
-                        menuValido = false;
-                        Console.WriteLine("Elija una opcion valida");
-                        break;
-                }
-                Console.ReadKey();
-            }
+            MenuConfirmarRegistro(paciente);
+            
 
         }
 
@@ -151,42 +115,26 @@ namespace SGH
             Console.Clear();
             Console.WriteLine("********  Busqueda de Pacientes en Base de Datos  ********");
             Console.WriteLine("");
-            Console.WriteLine("1.Busqueda");
-            Console.WriteLine("2.Regresar a la pagina anterior");
-            Console.WriteLine("0. Volver al MENU PRINCIPAL");
-            Console.WriteLine("");
+            Console.WriteLine("DNI");
 
-            bool menuValido = false;
+            string dni = Console.ReadLine();
+            Paciente paciente = pacienteBL.GetPaciente(dni);
 
-            while (!menuValido)
+            if (paciente == null)
             {
 
-                Console.WriteLine("Elija Usted una opcion del Menu para comenzar la busqueda:");
+                Console.WriteLine("");
+                Console.WriteLine("No se encontro el DNI indicado");
 
-                int opcionMenu = int.Parse(Console.ReadLine());
+                MenuNuevaBusqueda();
 
-                switch (opcionMenu)
-                {
-                    case 1:
-                        Console.WriteLine("Ingrese DNI:");
-                        int dni = int.Parse(Console.ReadLine());
-                        menuValido = true;
-                        break;
-                    case 2:
-                        MenuPaciente();
-                        menuValido = true;
-                        break;
-                    case 0:
-                        FormularioPrincipal.MenuPrincipal();
-                        menuValido = true;
-                        break;
-                    default:
-                        menuValido = false;
-                        Console.WriteLine("Elija una opcion valida");
-                        break;
-                }
-                Console.ReadKey();
             }
+            else
+            {
+                PacienteEncontrado(paciente);
+            }
+
+           
 
         }
 
@@ -233,6 +181,110 @@ namespace SGH
                 Console.ReadKey();
             }
 
+        }
+
+
+        public static void MenuConfirmarRegistro(Paciente paciente)
+        {
+            Console.WriteLine("********  CONFIRMACIÓN DE REGISTRO  ********");
+            Console.WriteLine("");
+            Console.WriteLine("1. Para Registrar");
+            Console.WriteLine("2. Para Cancelar y Volver al MENU ANTERIOR");
+            Console.WriteLine("0. Para Cancelar y Volver al MENU PRINCIPAL");
+            Console.WriteLine("");
+
+            bool menuValido = false;
+
+            while (!menuValido)
+            {
+
+                Console.WriteLine("Elija una opcion para continuar:");
+
+                int opcionMenu = int.Parse(Console.ReadLine());
+
+                switch (opcionMenu)
+                {
+                    case 1:
+                        //                        
+                        pacienteBL.InsertPaciente(paciente);                        
+                        menuValido = true;
+                        MenuPaciente();
+                        break;
+                    case 2:
+                        MenuPaciente();
+                        menuValido = true;
+                        break;
+                    case 0:
+                        FormularioPrincipal.MenuPrincipal();
+                        menuValido = true;
+                        break;
+                    default:
+                        menuValido = false;
+                        Console.WriteLine("Elija una opcion valida");
+                        break;
+                }
+                Console.ReadKey();
+            }
+        }
+
+
+        public static void MenuNuevaBusqueda()
+        {
+            bool menuValido = false;
+
+            while (!menuValido)
+            {
+                Console.WriteLine("********  NUEVA BUSQUEDA  ********");
+                Console.WriteLine("");
+                Console.WriteLine("1. Nueva Busqueda");
+                Console.WriteLine("2. MENU PACIENTE");
+                Console.WriteLine("0. MENU PRINCIPAL");
+                Console.WriteLine("");
+
+                int opcionMenu = int.Parse(Console.ReadLine());
+
+                switch (opcionMenu)
+                {
+                    case 1:
+                        BuscarPaciente();
+                        menuValido = true;                        
+                        break;
+                    case 2:
+                        MenuPaciente();
+                        menuValido = true;
+                        break;
+                    case 0:
+                        FormularioPrincipal.MenuPrincipal();
+                        menuValido = true;
+                        break;
+                    default:
+                        menuValido = false;
+                        Console.WriteLine("Elija una opcion valida");
+                        break;
+                }
+                Console.ReadKey();
+            }
+        }
+
+
+        public static void PacienteEncontrado(Paciente paciente)
+        {            
+            Console.Clear();
+            Console.WriteLine("********  Paciente Encontrado  ********");
+            Console.WriteLine("");
+
+            Console.WriteLine("DNI:" +  paciente.Dni);
+
+            Console.WriteLine("Nombre:"+paciente.Nombre);
+            Console.WriteLine("Apellidos:"+paciente.Apellidos);
+
+            Console.WriteLine("F.Nacimiento:"+paciente.FechaNac);
+            
+            Console.WriteLine("Tipo de Paciente:"+paciente.TipoPaciente);
+          
+            Console.WriteLine("");
+
+            MenuNuevaBusqueda();
         }
 
     }

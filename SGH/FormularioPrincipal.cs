@@ -12,8 +12,7 @@ namespace SGH
             Console.Clear();
             Console.WriteLine("***** MENU PRINCIPAL *****");
             Console.WriteLine("");
-            Console.WriteLine("1. Paciente");
-            Console.WriteLine("");
+            Console.WriteLine("1. Paciente");           
             Console.WriteLine("2. Medicos");
             Console.WriteLine("");
             bool menuValido = false;
